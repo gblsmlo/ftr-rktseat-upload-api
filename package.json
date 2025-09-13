@@ -1,0 +1,39 @@
+{
+	"name": "upload-widget-server",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "tsx watch --env-file .env src/infra/http/server.ts",
+		"lint": "biome check .",
+		"lint:fix": "biome check --write .",
+		"format": "biome format --write .",
+		"check": "biome check .",
+		"prepare": "husky"
+	},
+	"lint-staged": {
+		"*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx}": [
+			"biome check --no-errors-on-unmatched",
+			"biome check --write --no-errors-on-unmatched",
+			"biome format --write --no-errors-on-unmatched",
+			"biome lint --write --no-errors-on-unmatched"
+		]
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"packageManager": "pnpm@10.14.0",
+	"devDependencies": {
+		"@biomejs/biome": "^2.2.4",
+		"@tc96/biome-config": "^2.0.0",
+		"@types/node": "^24.3.3",
+		"tsx": "^4.20.5",
+		"typescript": "^5.9.2"
+	},
+	"dependencies": {
+		"@fastify/cors": "^11.1.0",
+		"fastify": "^5.6.0",
+		"fastify-type-provider-zod": "^6.0.0",
+		"zod": "^4.1.8"
+	}
+}
