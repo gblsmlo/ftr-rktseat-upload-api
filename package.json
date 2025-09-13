@@ -9,7 +9,9 @@
 		"lint:fix": "biome check --write .",
 		"format": "biome format --write .",
 		"check": "biome check .",
-		"prepare": "husky"
+		"prepare": "husky",
+		"test": "dotenv -e .env.test vitest run",
+		"test:watch": "dotenv -e .env.test vitest watch"
 	},
 	"lint-staged": {
 		"*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx}": [
@@ -28,15 +30,18 @@
 		"@tc96/biome-config": "^2.0.0",
 		"@types/node": "^24.3.3",
 		"tsx": "^4.20.5",
-		"typescript": "^5.9.2"
+		"typescript": "^5.9.2",
+		"vitest": "^3.2.4"
 	},
 	"dependencies": {
 		"@fastify/cors": "^11.1.0",
 		"@fastify/multipart": "^9.2.1",
 		"@fastify/swagger": "^9.5.1",
 		"@fastify/swagger-ui": "^5.2.3",
+		"dotenv-cli": "^10.0.0",
 		"fastify": "^5.6.0",
 		"fastify-type-provider-zod": "^6.0.0",
+		"vite-tsconfig-paths": "^5.1.4",
 		"zod": "^4.1.8"
 	}
 }
