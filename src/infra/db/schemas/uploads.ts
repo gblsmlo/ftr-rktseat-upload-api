@@ -1,15 +1,14 @@
-import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
+import { pgTable, text, timestamp } from 'drizzle-orm/pg-core'
+import { uuidv7 } from 'uuidv7'
 
 export const uploads = pgTable('uploads', {
 	id: text('id')
 		.primaryKey()
-		.$defaultFn(() => crypto.randomUUID()),
-	userId: uuid('user_id').notNull(),
+		.$defaultFn(() => uuidv7()),
 	name: text('name').notNull(),
 	remoteKey: text('remote_key').notNull(),
 	remoteUrl: text('url').notNull(),
 	createdAt: timestamp('created_at', { withTimezone: true })
 		.defaultNow()
 		.notNull(),
-	updatedAt: timestamp('updated_at').defaultNow().notNull(),
 })
