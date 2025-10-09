@@ -4,7 +4,7 @@ A backend service for image uploads, built with Fastify, Zod, Drizzle ORM, and C
 
 ## Course Attribution
 
-This project is part of a practical lesson in the postgraduate program "Tech Developer 360" at Rocketseat. Learn more at: https://www.rocketseat.com.br/faculdade/tech-developer-360 <mcreference link="https://www.rocketseat.com.br/faculdade/tech-developer-360" index="0">0</mcreference>
+This project is part of a practical lesson in the postgraduate program "Tech Developer 360" at Rocketseat. Learn more at: https://www.rocketseat.com.br/faculdade/tech-developer-360 <mcreference link="https://www.rocketseat.com.br/faculdade/tech-developer-360"></mcreference>
 
 ## Tech Stack
 
