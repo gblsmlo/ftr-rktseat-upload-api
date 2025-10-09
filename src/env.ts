@@ -6,6 +6,11 @@ const envSchema = z.object({
 		.enum(['development', 'test', 'production'])
 		.default('development'),
 	DATABASE_URL: z.url().startsWith('postgresql://'),
+	CLOUDFLARE_BUCKET_NAME: z.string(),
+	CLOUDFLARE_ACCOUNT_ID: z.string(),
+	CLOUDFLARE_ACCESS_KEY: z.string(),
+	CLOUDFLARE_ACCESS_SECRET: z.string(),
+	CLOUDFLARE_PUBLIC_URL: z.url(),
 })
 
 export const env = envSchema.parse(process.env)
