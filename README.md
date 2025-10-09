@@ -26,7 +26,7 @@ This project is part of a practical lesson in the postgraduate program "Tech Dev
 
 ## Environment Variables
 
-Defined and validated in <mcfile name="env.ts" path="/Users/gabs/Workspaces/l/ftr/upload-widget-server/src/env.ts"></mcfile>:
+Defined and validated in <mcfile name="env.ts" path="./src/env.ts"></mcfile>:
 
 - `PORT` (default: 3333)
 - `NODE_ENV` (development | test | production)
@@ -68,7 +68,7 @@ Create a `.env` file with these variables for local development.
     - 201 Created
     - 400 Validation error or invalid file format
 
-The OpenAPI schema is served and transformed for multipart via <mcfile name="server.ts" path="/Users/gabs/Workspaces/l/ftr/upload-widget-server/src/infra/http/server.ts"></mcfile> and <mcfile name="transform-swagger-schema.ts" path="/Users/gabs/Workspaces/l/ftr/upload-widget-server/src/infra/http/transform-swagger-schema.ts"></mcfile>.
+The OpenAPI schema is served and transformed for multipart via <mcfile name="server.ts" path="./src/infra/http/server.ts"></mcfile> and <mcfile name="transform-swagger-schema.ts" path="./src/infra/http/transform-swagger-schema.ts"></mcfile>.
 
 ## Testing
 
