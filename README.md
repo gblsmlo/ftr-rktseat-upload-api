@@ -10,15 +10,13 @@ This project is part of a practical lesson in the postgraduate program "Tech Dev
 
 - Node.js + TypeScript
 - Fastify (HTTP server), @fastify/cors, @fastify/multipart
-- Zod (validation)
-- Swagger + Swagger UI (API documentation)
-- Drizzle ORM (database access)
-- PostgreSQL (via Docker Compose)
-- AWS SDK S3 (Cloudflare R2 storage)
-- Vitest (testing)
-- Biome (lint/format)
-- tsx (TypeScript runner)
-- dotenv-cli (environment management)
+- Zod
+- Swagger + Swagger UI
+- Drizzle ORM
+- PostgreSQL
+- AWS SDK S3
+- Vitest
+- Biome
 
 ## Requirements
 
