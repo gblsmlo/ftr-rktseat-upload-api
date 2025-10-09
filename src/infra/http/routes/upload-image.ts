@@ -3,6 +3,7 @@ import z from 'zod'
 import { uploadImage } from '@/app/functions/upload-image'
 import { db } from '@/infra/db'
 import { schema } from '@/infra/db/schemas'
+import { isRight, unwrapEither } from '@/shared/either'
 export const uploadImageRoute: FastifyPluginAsyncZod = async (server) => {
 	server.post(
 		'/uploads',
@@ -33,13 +34,27 @@ export const uploadImageRoute: FastifyPluginAsyncZod = async (server) => {
 				return reply.status(400).send({ message: 'No file uploaded' })
 			}
 
-			await uploadImage({
+			const result = await uploadImage({
 				fileName: uploadIdFile.filename,
 				contentType: uploadIdFile.mimetype,
 				contentStream: uploadIdFile.file,
 			})
 
-			return reply.status(201).send({ uploadId: '123' })
+			if (isRight(result)) {
+				console.log(unwrapEither(result))
+
+				return reply.status(201).send()
+			}
+
+			const error = unwrapEither(result)
+
+			switch (error.constructor.name) {
+				case 'InvalidFileFormatError':
+					return reply.status(400).send({
+						message: error.message,
+					})
+			}
+			// return reply.status(400).send({ message: result.value.message })
 		},
 	)
 }
