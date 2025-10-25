@@ -1,7 +1,7 @@
+import { PassThrough, Transform } from 'node:stream'
+import { pipeline } from 'node:stream/promises'
 import { stringify } from 'csv-stringify'
 import { ilike } from 'drizzle-orm'
-import { PassThrough, Transform } from 'stream'
-import { pipeline } from 'stream/promises'
 import z from 'zod'
 import { db, pg } from '@/infra/db'
 import { schema } from '@/infra/db/schemas'
@@ -44,7 +44,7 @@ export async function exportUploads(
 		columns: [
 			{ key: 'id', header: 'ID' },
 			{ key: 'name', header: 'Name' },
-			{ key: 'remote_url', header: 'URL' },
+			{ key: 'url', header: 'URL' },
 			{ key: 'created_at', header: 'Created At' },
 		],
 	})
@@ -52,28 +52,29 @@ export async function exportUploads(
 	const uploadToStorageStream = new PassThrough()
 
 	// No blocking await here to allow streaming
-	const uploadToStorage = uploadFileToStorage({
-		contentType: 'text/csv',
-		folder: 'downloads',
-		fileName: `${new Date().toISOString()}-uploads-report.csv`,
-		contentStream: uploadToStorageStream,
-	})
-
-	// No blocking await here to allow streaming
 	const convertToCSVPipeline = pipeline(
 		cursor,
 		new Transform({
 			objectMode: true,
-			transform(chucks: unknown[], _, callback) {
-				for (const chuck of chucks) {
-					this.push(chuck)
+			transform(chunks: unknown[], _, callback) {
+				for (const chunk of chunks) {
+					this.push(chunk)
 				}
+
 				callback()
 			},
 		}),
 		csv,
 		uploadToStorageStream,
 	)
+
+	// No blocking await here to allow streaming
+	const uploadToStorage = uploadFileToStorage({
+		contentType: 'text/csv',
+		folder: 'downloads',
+		fileName: `${new Date().toISOString()}-uploads.csv`,
+		contentStream: uploadToStorageStream,
+	})
 
 	// Resolve both promises
 	const [{ url }] = await Promise.all([uploadToStorage, convertToCSVPipeline])
