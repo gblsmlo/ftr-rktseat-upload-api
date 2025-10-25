@@ -28,7 +28,6 @@ fastify-*.log
 .env.local
 .env.development
 .env.production
-.env.test
 
 # Runtime files
 *.pid
