@@ -11,10 +11,8 @@
 [![Biome](https://img.shields.io/badge/Biome-1.x-60A5FA?style=for-the-badge&logo=biome)](https://biomejs.dev/)
 
 </div>
-
-![API Documentation Preview](./docs/images/preview.png)
-
 A backend service for image uploads, built with Fastify, Zod, Drizzle ORM, and Cloudflare R2 (via AWS SDK S3). It provides a REST API to upload images and stores metadata in PostgreSQL. Documentation is available at `/docs` using Swagger UI.
+<img width="1480" height="842" alt="Screenshot 2025-10-25 at 19 26 55" src="https://github.com/user-attachments/assets/34cf3b2b-f081-4722-85bf-45c1b9b22743" />
 
 ## ✨ Tech Stack
 
