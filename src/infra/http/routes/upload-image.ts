@@ -1,8 +1,6 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import z from 'zod'
 import { uploadImage } from '@/app/functions/upload-image'
-import { db } from '@/infra/db'
-import { schema } from '@/infra/db/schemas'
 import { isRight, unwrapEither } from '@/shared/either'
 export const uploadImageRoute: FastifyPluginAsyncZod = async (server) => {
 	server.post(
@@ -18,12 +16,6 @@ export const uploadImageRoute: FastifyPluginAsyncZod = async (server) => {
 			},
 		},
 		async (request, reply) => {
-			await db.insert(schema.uploads).values({
-				name: 'test.jpg',
-				remoteKey: 'https://example.com/test.jpg',
-				remoteUrl: 'https://example.com/test.jpg',
-			})
-
 			const uploadIdFile = await request.file({
 				limits: {
 					fileSize: 1024 * 1024 * 2, // 2MB
@@ -39,6 +31,12 @@ export const uploadImageRoute: FastifyPluginAsyncZod = async (server) => {
 				contentType: uploadIdFile.mimetype,
 				contentStream: uploadIdFile.file,
 			})
+
+			if(uploadIdFile.file.truncated) {
+				return reply.status(400).send({ 
+					message: 'File size exceeds the limit of 2MB' 
+				})
+			}
 
 			if (isRight(result)) {
 				console.log(unwrapEither(result))
