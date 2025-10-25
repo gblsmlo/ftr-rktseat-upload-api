@@ -1,5 +1,4 @@
 # Upload Widget Server
-
 A backend service for image uploads, built with Fastify, Zod, Drizzle ORM, and Cloudflare R2 (via AWS SDK S3). It provides a REST API to upload images and stores metadata in PostgreSQL. Documentation is available at `/docs` using Swagger UI.
 
 ## Course Attribution
