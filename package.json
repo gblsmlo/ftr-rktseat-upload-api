@@ -4,6 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
+		"build": "tsup-node",
 		"dev": "tsx watch --env-file .env src/infra/http/server.ts",
 		"db:drift": "drizzle-kit diff:pg --schema src/infra/db/schema --out src/infra/db/migrations",
 		"db:generate": "drizzle-kit generate",
@@ -39,6 +40,7 @@
 		"@tc96/biome-config": "^2.0.0",
 		"@types/node": "^24.3.3",
 		"drizzle-kit": "^0.31.4",
+		"tsup": "^8.5.0",
 		"tsx": "^4.20.5",
 		"typescript": "^5.9.2",
 		"vitest": "^3.2.4"
