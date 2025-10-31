@@ -14,7 +14,7 @@
 A backend service for image uploads, built with Fastify, Zod, Drizzle ORM, and Cloudflare R2 (via AWS SDK S3). It provides a REST API to upload images and stores metadata in PostgreSQL. Documentation is available at `/docs` using Swagger UI.
 <img width="1480" height="842" alt="Screenshot 2025-10-25 at 19 26 55" src="https://github.com/user-attachments/assets/34cf3b2b-f081-4722-85bf-45c1b9b22743" />
 
-## ✨ Tech Stack
+## Tech Stack
 
 - [Node.js](https://nodejs.org/) + [TypeScript](https://www.typescriptlang.org/)
 - [Fastify](https://fastify.dev/) (HTTP server)
@@ -26,13 +26,13 @@ A backend service for image uploads, built with Fastify, Zod, Drizzle ORM, and C
 - [Vitest](https://vitest.dev/) (Testing)
 - [Biome](https://biomejs.dev/) (Linter & Formatter)
 
-## ✅ Requirements
+## Requirements
 
 - [Node.js](https://nodejs.org/) 22+
 - [pnpm](https://pnpm.io/) 10+
 - [Docker](https://www.docker.com/) (for PostgreSQL)
 
-## 📦 Environment Variables
+## Environment Variables
 
 Defined and validated in `src/env.ts`:
 
@@ -47,7 +47,7 @@ Defined and validated in `src/env.ts`:
 
 Create a `.env` file with these variables for local development.
 
-## 🚀 Getting Started
+## Getting Started
 
 1.  **Start PostgreSQL with Docker Compose:**
     ```bash
@@ -68,7 +68,7 @@ Create a `.env` file with these variables for local development.
 5.  **Open API docs (Swagger UI):**
     - http://localhost:3333/docs
 
-## 📚 API Reference
+## API Reference
 
 - `POST /uploads`: Upload an image (multipart/form-data).
 - `GET /uploads`: Get a list of all uploads.
@@ -76,17 +76,17 @@ Create a `.env` file with these variables for local development.
 
 The OpenAPI schema is served and transformed for multipart via `src/infra/http/server.ts` and `src/infra/http/transform-swagger-schema.ts`.
 
-## 🧪 Testing
+## Testing
 
 Run the test suite:
 ```bash
 pnpm test
 ```
 
-## 🎓 Course Attribution
+## Course Attribution
 
 This project is part of a practical lesson in the postgraduate program "Tech Developer 360" at Rocketseat. Learn more at: https://www.rocketseat.com.br/faculdade/tech-developer-360
 
-## 📄 License
+## License
 
 ISC (default). See the `license` field in `package.json`.
